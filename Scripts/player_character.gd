@@ -254,6 +254,18 @@ func stair_step_up(delta):
 					step_collisions += 1
 					_debug_stair_step_up("SSU_NEW_HEIGHT", difference)								## DEBUG
 
+	# Ensure we aren't colliding with a ceiling when applying height
+	body_test_params.from = self.global_transform		# Self as origin point
+	body_test_params.motion = step_height * vertical	# Translate up by step_height
+
+	if PhysicsServer3D.body_test_motion(self.get_rid(), body_test_params, body_test_result):
+		# Make sure its a ceiling collision
+		for i in range(body_test_result.get_collision_count()):
+			if body_test_result.get_collision_normal(i).y <= -0.9:	# Ceiling Y normal will be -1, but we should
+																	# account for potential normal inaccuracies.
+				_debug_stair_step_up("SSU_CEILING_COLLISION", null)									## DEBUG
+				return
+
 	# Push player up by highest step we found
 	# or exit if we didn't hit a step
 	if step_collisions != 0:
@@ -302,6 +314,8 @@ func _debug_stair_step_up(param, value):
 			print("SSU: Collision coordinates = ", value.get_collision_point().y)
 		"SSU_COL_NORMAL":
 			print("SSU: Collision normal = ", value)
+		"SSU_CEILING_COLLISION":
+			print("SSU: Ceiling is blocking step-up")
 		"SSU_NEW_HEIGHT":
 			print("SSU: New height saved = ", value)
 		"SSU_APPLIED":

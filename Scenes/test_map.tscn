@@ -147,6 +147,7 @@ metadata/_edit_lock_ = true
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_wh422")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+STEP_UP_DEBUG = true
 
 [node name="Objects" type="Node3D" parent="."]
 
@@ -316,6 +317,60 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.5, 21.5)
 mesh = SubResource("BoxMesh_6mc4x")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Medium Boxes/MediumBox8"]
+shape = SubResource("ConcavePolygonShape3D_2nqm2")
+
+[node name="MediumBox9" type="StaticBody3D" parent="Objects/Boxes/Medium Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 4.75, 24)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Medium Boxes/MediumBox9"]
+mesh = SubResource("BoxMesh_6mc4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Medium Boxes/MediumBox9"]
+shape = SubResource("ConcavePolygonShape3D_2nqm2")
+
+[node name="MediumBox10" type="StaticBody3D" parent="Objects/Boxes/Medium Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1, 24)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Medium Boxes/MediumBox10"]
+mesh = SubResource("BoxMesh_6mc4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Medium Boxes/MediumBox10"]
+shape = SubResource("ConcavePolygonShape3D_2nqm2")
+
+[node name="MediumBox11" type="StaticBody3D" parent="Objects/Boxes/Medium Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 5, 26.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Medium Boxes/MediumBox11"]
+mesh = SubResource("BoxMesh_6mc4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Medium Boxes/MediumBox11"]
+shape = SubResource("ConcavePolygonShape3D_2nqm2")
+
+[node name="MediumBox12" type="StaticBody3D" parent="Objects/Boxes/Medium Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1, 26.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Medium Boxes/MediumBox12"]
+mesh = SubResource("BoxMesh_6mc4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Medium Boxes/MediumBox12"]
+shape = SubResource("ConcavePolygonShape3D_2nqm2")
+
+[node name="MediumBox13" type="StaticBody3D" parent="Objects/Boxes/Medium Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 5.25, 29)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Medium Boxes/MediumBox13"]
+mesh = SubResource("BoxMesh_6mc4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Medium Boxes/MediumBox13"]
+shape = SubResource("ConcavePolygonShape3D_2nqm2")
+
+[node name="MediumBox14" type="StaticBody3D" parent="Objects/Boxes/Medium Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 1, 29)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Medium Boxes/MediumBox14"]
+mesh = SubResource("BoxMesh_6mc4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Medium Boxes/MediumBox14"]
 shape = SubResource("ConcavePolygonShape3D_2nqm2")
 
 [node name="Big Boxes" type="Node3D" parent="Objects/Boxes"]
