@@ -7,3 +7,5 @@ Features:
 - Basic first-person camera smoothing
 
 You can install by downloading and importing the addon folder into your Godot project, or by installing from the asset library.
+
+To enable the debug view for collisions, go to the top bar, click "Debug", and enable "Visible Collision Shapes".
