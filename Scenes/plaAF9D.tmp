@@ -1,0 +1,116 @@
+[gd_scene load_steps=7 format=3 uid="uid://bkh244ybrnt3j"]
+
+[ext_resource type="Script" path="res://Scripts/player_character.gd" id="1_t2afb"]
+[ext_resource type="Material" uid="uid://cue16i6jlwjtl" path="res://Assets/textures/GridOrangeTile.tres" id="2_nrduh"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_efn4y"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_28r7i"]
+radius = 0.25
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_bs6ld"]
+material = ExtResource("2_nrduh")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gppcu"]
+size = Vector3(0.1, 0, 0.1)
+
+[node name="PlayerCharacter" type="CharacterBody3D"]
+floor_stop_on_slope = false
+floor_block_on_wall = false
+floor_snap_length = 0.5
+script = ExtResource("1_t2afb")
+
+[node name="PlayerCollision" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_efn4y")
+
+[node name="PlayerCollisionSupport" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.800067, 0)
+shape = SubResource("SphereShape3D_28r7i")
+
+[node name="PlayerMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_bs6ld")
+
+[node name="PlayerCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+current = true
+fov = 90.0
+
+[node name="CameraPos" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+fov = 1.0
+
+[node name="PlayerBottom" type="ShapeCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05, 0)
+enabled = false
+shape = SubResource("BoxShape3D_gppcu")
+target_position = Vector3(0, 0, 0)
+max_results = 0
+collision_mask = 0
+collide_with_bodies = false
+
+[node name="CollisionRays" type="Node3D" parent="."]
+
+[node name="CollisionRay1" type="RayCast3D" parent="CollisionRays"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.55, 0)
+target_position = Vector3(0, -0.5, 0)
+hit_back_faces = false
+debug_shape_custom_color = Color(0, 0, 1, 1)
+
+[node name="CollisionRay2" type="RayCast3D" parent="CollisionRays"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.55, 0)
+target_position = Vector3(0, -0.5, 0)
+hit_back_faces = false
+debug_shape_custom_color = Color(0, 0, 1, 1)
+
+[node name="CollisionRay3" type="RayCast3D" parent="CollisionRays"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.55, 0)
+target_position = Vector3(0, -0.5, 0)
+hit_back_faces = false
+debug_shape_custom_color = Color(0, 0, 1, 1)
+
+[node name="CollisionRay4" type="RayCast3D" parent="CollisionRays"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.55, 0)
+target_position = Vector3(0, -0.5, 0)
+hit_back_faces = false
+debug_shape_custom_color = Color(0, 0, 1, 1)
+
+[node name="CollisionRay5" type="RayCast3D" parent="CollisionRays"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.55, 0)
+target_position = Vector3(0, -0.5, 0)
+hit_back_faces = false
+debug_shape_custom_color = Color(0, 0, 1, 1)
+
+[node name="PlayerHUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CrosshairContainer" type="CenterContainer" parent="PlayerHUD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Top" type="Line2D" parent="PlayerHUD/CrosshairContainer"]
+points = PackedVector2Array(0, -5, 0, -15)
+width = 2.0
+
+[node name="Right" type="Line2D" parent="PlayerHUD/CrosshairContainer"]
+points = PackedVector2Array(5, 0, 15, 0)
+width = 2.0
+
+[node name="Bottom" type="Line2D" parent="PlayerHUD/CrosshairContainer"]
+points = PackedVector2Array(0, 5, 0, 15)
+width = 2.0
+
+[node name="Left" type="Line2D" parent="PlayerHUD/CrosshairContainer"]
+points = PackedVector2Array(-5, 0, -15, 0)
+width = 2.0

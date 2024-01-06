@@ -1,0 +1,1782 @@
+[gd_scene load_steps=36 format=3 uid="uid://c2sh6lnrhovn5"]
+
+[ext_resource type="Texture2D" uid="uid://r0qb42lm75bj" path="res://Assets/hdris/kloofendal_48d_partly_cloudy_puresky_2k.hdr" id="1_osl71"]
+[ext_resource type="Material" uid="uid://b4y5n30dsw6n" path="res://Assets/textures/GridDarkTile.tres" id="1_tmty5"]
+[ext_resource type="PackedScene" uid="uid://bkh244ybrnt3j" path="res://Scenes/player_character.tscn" id="2_wh422"]
+[ext_resource type="Material" uid="uid://cue16i6jlwjtl" path="res://Assets/textures/GridOrangeTile.tres" id="4_fdxkb"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_a765t"]
+panorama = ExtResource("1_osl71")
+
+[sub_resource type="Sky" id="Sky_yj60q"]
+sky_material = SubResource("PanoramaSkyMaterial_a765t")
+
+[sub_resource type="Environment" id="Environment_c7k17"]
+background_mode = 2
+sky = SubResource("Sky_yj60q")
+tonemap_mode = 2
+tonemap_exposure = 0.65
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_y31v6"]
+material = ExtResource("1_tmty5")
+size = Vector2(1000, 1000)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3wauy"]
+data = PackedVector3Array(500, 0, 500, -500, 0, 500, 500, 0, -500, -500, 0, 500, -500, 0, -500, 500, 0, -500)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xp477"]
+material = ExtResource("4_fdxkb")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_oagfp"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6mc4x"]
+material = ExtResource("4_fdxkb")
+size = Vector3(2, 2, 2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2nqm2"]
+data = PackedVector3Array(-1, 1, 1, 1, 1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, 1, 1, -1, -1, 1, -1, 1, -1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, -1, 1, -1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, 1, 1, 1, -1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, -1, -1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_jmttl"]
+material = ExtResource("4_fdxkb")
+size = Vector3(4, 4, 4)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_rtyta"]
+data = PackedVector3Array(-2, 2, 2, 2, 2, 2, -2, -2, 2, 2, 2, 2, 2, -2, 2, -2, -2, 2, 2, 2, -2, -2, 2, -2, 2, -2, -2, -2, 2, -2, -2, -2, -2, 2, -2, -2, 2, 2, 2, 2, 2, -2, 2, -2, 2, 2, 2, -2, 2, -2, -2, 2, -2, 2, -2, 2, -2, -2, 2, 2, -2, -2, -2, -2, 2, 2, -2, -2, 2, -2, -2, -2, 2, 2, 2, -2, 2, 2, 2, 2, -2, -2, 2, 2, -2, 2, -2, 2, 2, -2, -2, -2, 2, 2, -2, 2, -2, -2, -2, 2, -2, 2, 2, -2, -2, -2, -2, -2)
+
+[sub_resource type="PrismMesh" id="PrismMesh_q502a"]
+material = ExtResource("4_fdxkb")
+left_to_right = 0.0
+size = Vector3(10, 4, 4)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tenc3"]
+data = PackedVector3Array(-5, 2, 2, 5, -2, 2, -5, -2, 2, -5, 2, -2, -5, -2, -2, 5, -2, -2, -5, 2, 2, -5, 2, -2, 5, -2, 2, -5, 2, -2, 5, -2, -2, 5, -2, 2, -5, 2, -2, -5, 2, 2, -5, -2, -2, -5, 2, 2, -5, -2, 2, -5, -2, -2, -5, -2, 2, 5, -2, 2, -5, -2, -2, 5, -2, 2, 5, -2, -2, -5, -2, -2)
+
+[sub_resource type="PrismMesh" id="PrismMesh_6deqf"]
+material = ExtResource("4_fdxkb")
+left_to_right = 0.0
+size = Vector3(10, 4, 6)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1384w"]
+data = PackedVector3Array(-5, 2, 3, 5, -2, 3, -5, -2, 3, -5, 2, -3, -5, -2, -3, 5, -2, -3, -5, 2, 3, -5, 2, -3, 5, -2, 3, -5, 2, -3, 5, -2, -3, 5, -2, 3, -5, 2, -3, -5, 2, 3, -5, -2, -3, -5, 2, 3, -5, -2, 3, -5, -2, -3, -5, -2, 3, 5, -2, 3, -5, -2, -3, 5, -2, 3, 5, -2, -3, -5, -2, -3)
+
+[sub_resource type="PrismMesh" id="PrismMesh_l6nov"]
+material = ExtResource("4_fdxkb")
+left_to_right = 0.0
+size = Vector3(10, 10, 4)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_j70ka"]
+data = PackedVector3Array(-5, 5, 2, 5, -5, 2, -5, -5, 2, -5, 5, -2, -5, -5, -2, 5, -5, -2, -5, 5, 2, -5, 5, -2, 5, -5, 2, -5, 5, -2, 5, -5, -2, 5, -5, 2, -5, 5, -2, -5, 5, 2, -5, -5, -2, -5, 5, 2, -5, -5, 2, -5, -5, -2, -5, -5, 2, 5, -5, 2, -5, -5, -2, 5, -5, 2, 5, -5, -2, -5, -5, -2)
+
+[sub_resource type="PrismMesh" id="PrismMesh_7pfl4"]
+material = ExtResource("4_fdxkb")
+left_to_right = 0.0
+size = Vector3(10, 10, 6)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_50le4"]
+data = PackedVector3Array(-5, 5, 3, 5, -5, 3, -5, -5, 3, -5, 5, -3, -5, -5, -3, 5, -5, -3, -5, 5, 3, -5, 5, -3, 5, -5, 3, -5, 5, -3, 5, -5, -3, 5, -5, 3, -5, 5, -3, -5, 5, 3, -5, -5, -3, -5, 5, 3, -5, -5, 3, -5, -5, -3, -5, -5, 3, 5, -5, 3, -5, -5, -3, 5, -5, 3, 5, -5, -3, -5, -5, -3)
+
+[sub_resource type="PrismMesh" id="PrismMesh_e860q"]
+material = ExtResource("4_fdxkb")
+left_to_right = 0.0
+size = Vector3(10, 20, 4)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jqans"]
+data = PackedVector3Array(-5, 10, 2, 5, -10, 2, -5, -10, 2, -5, 10, -2, -5, -10, -2, 5, -10, -2, -5, 10, 2, -5, 10, -2, 5, -10, 2, -5, 10, -2, 5, -10, -2, 5, -10, 2, -5, 10, -2, -5, 10, 2, -5, -10, -2, -5, 10, 2, -5, -10, 2, -5, -10, -2, -5, -10, 2, 5, -10, 2, -5, -10, -2, 5, -10, 2, 5, -10, -2, -5, -10, -2)
+
+[sub_resource type="PrismMesh" id="PrismMesh_6gshq"]
+material = ExtResource("4_fdxkb")
+left_to_right = 0.0
+size = Vector3(10, 20, 6)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_yblua"]
+data = PackedVector3Array(-5, 10, 3, 5, -10, 3, -5, -10, 3, -5, 10, -3, -5, -10, -3, 5, -10, -3, -5, 10, 3, -5, 10, -3, 5, -10, 3, -5, 10, -3, 5, -10, -3, 5, -10, 3, -5, 10, -3, -5, 10, 3, -5, -10, -3, -5, 10, 3, -5, -10, 3, -5, -10, -3, -5, -10, 3, 5, -10, 3, -5, -10, -3, 5, -10, 3, 5, -10, -3, -5, -10, -3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gt8aw"]
+material = ExtResource("4_fdxkb")
+size = Vector3(1, 0.5, 2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_diivs"]
+data = PackedVector3Array(-0.5, 0.25, 1, 0.5, 0.25, 1, -0.5, -0.25, 1, 0.5, 0.25, 1, 0.5, -0.25, 1, -0.5, -0.25, 1, 0.5, 0.25, -1, -0.5, 0.25, -1, 0.5, -0.25, -1, -0.5, 0.25, -1, -0.5, -0.25, -1, 0.5, -0.25, -1, 0.5, 0.25, 1, 0.5, 0.25, -1, 0.5, -0.25, 1, 0.5, 0.25, -1, 0.5, -0.25, -1, 0.5, -0.25, 1, -0.5, 0.25, -1, -0.5, 0.25, 1, -0.5, -0.25, -1, -0.5, 0.25, 1, -0.5, -0.25, 1, -0.5, -0.25, -1, 0.5, 0.25, 1, -0.5, 0.25, 1, 0.5, 0.25, -1, -0.5, 0.25, 1, -0.5, 0.25, -1, 0.5, 0.25, -1, -0.5, -0.25, 1, 0.5, -0.25, 1, -0.5, -0.25, -1, 0.5, -0.25, 1, 0.5, -0.25, -1, -0.5, -0.25, -1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mvreg"]
+material = ExtResource("4_fdxkb")
+size = Vector3(0.5, 0.5, 2)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_op6cu"]
+data = PackedVector3Array(-0.25, 0.25, 1, 0.25, 0.25, 1, -0.25, -0.25, 1, 0.25, 0.25, 1, 0.25, -0.25, 1, -0.25, -0.25, 1, 0.25, 0.25, -1, -0.25, 0.25, -1, 0.25, -0.25, -1, -0.25, 0.25, -1, -0.25, -0.25, -1, 0.25, -0.25, -1, 0.25, 0.25, 1, 0.25, 0.25, -1, 0.25, -0.25, 1, 0.25, 0.25, -1, 0.25, -0.25, -1, 0.25, -0.25, 1, -0.25, 0.25, -1, -0.25, 0.25, 1, -0.25, -0.25, -1, -0.25, 0.25, 1, -0.25, -0.25, 1, -0.25, -0.25, -1, 0.25, 0.25, 1, -0.25, 0.25, 1, 0.25, 0.25, -1, -0.25, 0.25, 1, -0.25, 0.25, -1, 0.25, 0.25, -1, -0.25, -0.25, 1, 0.25, -0.25, 1, -0.25, -0.25, -1, 0.25, -0.25, 1, 0.25, -0.25, -1, -0.25, -0.25, -1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_yo4k1"]
+material = ExtResource("4_fdxkb")
+size = Vector3(10, 16, 10)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ls0vr"]
+data = PackedVector3Array(-5, 8, 5, 5, 8, 5, -5, -8, 5, 5, 8, 5, 5, -8, 5, -5, -8, 5, 5, 8, -5, -5, 8, -5, 5, -8, -5, -5, 8, -5, -5, -8, -5, 5, -8, -5, 5, 8, 5, 5, 8, -5, 5, -8, 5, 5, 8, -5, 5, -8, -5, 5, -8, 5, -5, 8, -5, -5, 8, 5, -5, -8, -5, -5, 8, 5, -5, -8, 5, -5, -8, -5, 5, 8, 5, -5, 8, 5, 5, 8, -5, -5, 8, 5, -5, 8, -5, 5, 8, -5, -5, -8, 5, 5, -8, 5, -5, -8, -5, 5, -8, 5, 5, -8, -5, -5, -8, -5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_f707a"]
+material = ExtResource("4_fdxkb")
+size = Vector3(1, 50, 20)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bxyuc"]
+data = PackedVector3Array(-0.5, 25, 10, 0.5, 25, 10, -0.5, -25, 10, 0.5, 25, 10, 0.5, -25, 10, -0.5, -25, 10, 0.5, 25, -10, -0.5, 25, -10, 0.5, -25, -10, -0.5, 25, -10, -0.5, -25, -10, 0.5, -25, -10, 0.5, 25, 10, 0.5, 25, -10, 0.5, -25, 10, 0.5, 25, -10, 0.5, -25, -10, 0.5, -25, 10, -0.5, 25, -10, -0.5, 25, 10, -0.5, -25, -10, -0.5, 25, 10, -0.5, -25, 10, -0.5, -25, -10, 0.5, 25, 10, -0.5, 25, 10, 0.5, 25, -10, -0.5, 25, 10, -0.5, 25, -10, 0.5, 25, -10, -0.5, -25, 10, 0.5, -25, 10, -0.5, -25, -10, 0.5, -25, 10, 0.5, -25, -10, -0.5, -25, -10)
+
+[node name="TestMap" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_c7k17")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 5, 0)
+shadow_enabled = true
+metadata/_edit_lock_ = true
+
+[node name="Floor" type="StaticBody3D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_y31v6")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("ConcavePolygonShape3D_3wauy")
+metadata/_edit_lock_ = true
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_wh422")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+
+[node name="Objects" type="Node3D" parent="."]
+
+[node name="Boxes" type="Node3D" parent="Objects"]
+
+[node name="Small Boxes" type="Node3D" parent="Objects/Boxes"]
+
+[node name="SmallBox1" type="StaticBody3D" parent="Objects/Boxes/Small Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.5, -9.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Small Boxes/SmallBox1"]
+mesh = SubResource("BoxMesh_xp477")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Small Boxes/SmallBox1"]
+shape = SubResource("ConcavePolygonShape3D_oagfp")
+
+[node name="SmallBox2" type="StaticBody3D" parent="Objects/Boxes/Small Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.5, 0.5, -9.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Small Boxes/SmallBox2"]
+mesh = SubResource("BoxMesh_xp477")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Small Boxes/SmallBox2"]
+shape = SubResource("ConcavePolygonShape3D_oagfp")
+
+[node name="SmallBox3" type="StaticBody3D" parent="Objects/Boxes/Small Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.5, 0.5, -9.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Small Boxes/SmallBox3"]
+mesh = SubResource("BoxMesh_xp477")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Small Boxes/SmallBox3"]
+shape = SubResource("ConcavePolygonShape3D_oagfp")
+
+[node name="SmallBox4" type="StaticBody3D" parent="Objects/Boxes/Small Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0.5, -9.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Small Boxes/SmallBox4"]
+mesh = SubResource("BoxMesh_xp477")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Small Boxes/SmallBox4"]
+shape = SubResource("ConcavePolygonShape3D_oagfp")
+
+[node name="SmallBox5" type="StaticBody3D" parent="Objects/Boxes/Small Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0.5, -9.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Small Boxes/SmallBox5"]
+mesh = SubResource("BoxMesh_xp477")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Small Boxes/SmallBox5"]
+shape = SubResource("ConcavePolygonShape3D_oagfp")
+
+[node name="SmallBox6" type="StaticBody3D" parent="Objects/Boxes/Small Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.5, 0.5, -9.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Small Boxes/SmallBox6"]
+mesh = SubResource("BoxMesh_xp477")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Small Boxes/SmallBox6"]
+shape = SubResource("ConcavePolygonShape3D_oagfp")
+
+[node name="SmallBox7" type="StaticBody3D" parent="Objects/Boxes/Small Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5, 0.5, -9.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Small Boxes/SmallBox7"]
+mesh = SubResource("BoxMesh_xp477")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Small Boxes/SmallBox7"]
+shape = SubResource("ConcavePolygonShape3D_oagfp")
+
+[node name="SmallBox8" type="StaticBody3D" parent="Objects/Boxes/Small Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.5, 0.5, -9.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Small Boxes/SmallBox8"]
+mesh = SubResource("BoxMesh_xp477")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Small Boxes/SmallBox8"]
+shape = SubResource("ConcavePolygonShape3D_oagfp")
+
+[node name="SmallBox9" type="StaticBody3D" parent="Objects/Boxes/Small Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 2.5, -11.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Small Boxes/SmallBox9"]
+mesh = SubResource("BoxMesh_xp477")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Small Boxes/SmallBox9"]
+shape = SubResource("ConcavePolygonShape3D_oagfp")
+
+[node name="SmallBox10" type="StaticBody3D" parent="Objects/Boxes/Small Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 2.5, -11.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Small Boxes/SmallBox10"]
+mesh = SubResource("BoxMesh_xp477")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Small Boxes/SmallBox10"]
+shape = SubResource("ConcavePolygonShape3D_oagfp")
+
+[node name="Medium Boxes" type="Node3D" parent="Objects/Boxes"]
+
+[node name="MediumBox1" type="StaticBody3D" parent="Objects/Boxes/Medium Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 1, -11)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Medium Boxes/MediumBox1"]
+mesh = SubResource("BoxMesh_6mc4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Medium Boxes/MediumBox1"]
+shape = SubResource("ConcavePolygonShape3D_2nqm2")
+
+[node name="MediumBox2" type="StaticBody3D" parent="Objects/Boxes/Medium Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 1, -11)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Medium Boxes/MediumBox2"]
+mesh = SubResource("BoxMesh_6mc4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Medium Boxes/MediumBox2"]
+shape = SubResource("ConcavePolygonShape3D_2nqm2")
+
+[node name="MediumBox3" type="StaticBody3D" parent="Objects/Boxes/Medium Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 1, -11)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Medium Boxes/MediumBox3"]
+mesh = SubResource("BoxMesh_6mc4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Medium Boxes/MediumBox3"]
+shape = SubResource("ConcavePolygonShape3D_2nqm2")
+
+[node name="MediumBox4" type="StaticBody3D" parent="Objects/Boxes/Medium Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 1, -11)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Medium Boxes/MediumBox4"]
+mesh = SubResource("BoxMesh_6mc4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Medium Boxes/MediumBox4"]
+shape = SubResource("ConcavePolygonShape3D_2nqm2")
+
+[node name="MediumBox5" type="StaticBody3D" parent="Objects/Boxes/Medium Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3, 14)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Medium Boxes/MediumBox5"]
+mesh = SubResource("BoxMesh_6mc4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Medium Boxes/MediumBox5"]
+shape = SubResource("ConcavePolygonShape3D_2nqm2")
+
+[node name="MediumBox6" type="StaticBody3D" parent="Objects/Boxes/Medium Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.25, 16.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Medium Boxes/MediumBox6"]
+mesh = SubResource("BoxMesh_6mc4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Medium Boxes/MediumBox6"]
+shape = SubResource("ConcavePolygonShape3D_2nqm2")
+
+[node name="MediumBox7" type="StaticBody3D" parent="Objects/Boxes/Medium Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.5, 19)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Medium Boxes/MediumBox7"]
+mesh = SubResource("BoxMesh_6mc4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Medium Boxes/MediumBox7"]
+shape = SubResource("ConcavePolygonShape3D_2nqm2")
+
+[node name="MediumBox8" type="StaticBody3D" parent="Objects/Boxes/Medium Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16, 3.5, 21.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Medium Boxes/MediumBox8"]
+mesh = SubResource("BoxMesh_6mc4x")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Medium Boxes/MediumBox8"]
+shape = SubResource("ConcavePolygonShape3D_2nqm2")
+
+[node name="Big Boxes" type="Node3D" parent="Objects/Boxes"]
+
+[node name="BigBox1" type="StaticBody3D" parent="Objects/Boxes/Big Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 2, -14)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Big Boxes/BigBox1"]
+mesh = SubResource("BoxMesh_jmttl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Big Boxes/BigBox1"]
+shape = SubResource("ConcavePolygonShape3D_rtyta")
+
+[node name="BigBox2" type="StaticBody3D" parent="Objects/Boxes/Big Boxes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, 2, -14)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Boxes/Big Boxes/BigBox2"]
+mesh = SubResource("BoxMesh_jmttl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Boxes/Big Boxes/BigBox2"]
+shape = SubResource("ConcavePolygonShape3D_rtyta")
+
+[node name="Ramps" type="Node3D" parent="Objects"]
+
+[node name="ShallowRamp1" type="StaticBody3D" parent="Objects/Ramps"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2, -2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Ramps/ShallowRamp1"]
+mesh = SubResource("PrismMesh_q502a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Ramps/ShallowRamp1"]
+shape = SubResource("ConcavePolygonShape3D_tenc3")
+
+[node name="ShallowRamp2" type="StaticBody3D" parent="Objects/Ramps"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -23, 2, -2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Ramps/ShallowRamp2"]
+mesh = SubResource("PrismMesh_q502a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Ramps/ShallowRamp2"]
+shape = SubResource("ConcavePolygonShape3D_tenc3")
+
+[node name="ShallowRamp3" type="StaticBody3D" parent="Objects/Ramps"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 2, -7)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Ramps/ShallowRamp3"]
+mesh = SubResource("PrismMesh_6deqf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Ramps/ShallowRamp3"]
+shape = SubResource("ConcavePolygonShape3D_1384w")
+
+[node name="WalkableRamp1" type="StaticBody3D" parent="Objects/Ramps"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 5, 2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Ramps/WalkableRamp1"]
+mesh = SubResource("PrismMesh_l6nov")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Ramps/WalkableRamp1"]
+shape = SubResource("ConcavePolygonShape3D_j70ka")
+
+[node name="WalkableRamp2" type="StaticBody3D" parent="Objects/Ramps"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -23, 5, 2)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Ramps/WalkableRamp2"]
+mesh = SubResource("PrismMesh_l6nov")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Ramps/WalkableRamp2"]
+shape = SubResource("ConcavePolygonShape3D_j70ka")
+
+[node name="WalkableRamp3" type="StaticBody3D" parent="Objects/Ramps"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 5, -13)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Ramps/WalkableRamp3"]
+mesh = SubResource("PrismMesh_7pfl4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Ramps/WalkableRamp3"]
+shape = SubResource("ConcavePolygonShape3D_50le4")
+
+[node name="SteepRamp1" type="StaticBody3D" parent="Objects/Ramps"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 10, 6)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Ramps/SteepRamp1"]
+mesh = SubResource("PrismMesh_e860q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Ramps/SteepRamp1"]
+shape = SubResource("ConcavePolygonShape3D_jqans")
+
+[node name="SteepRamp2" type="StaticBody3D" parent="Objects/Ramps"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -23, 10, 6)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Ramps/SteepRamp2"]
+mesh = SubResource("PrismMesh_e860q")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Ramps/SteepRamp2"]
+shape = SubResource("ConcavePolygonShape3D_jqans")
+
+[node name="SteepRamp3" type="StaticBody3D" parent="Objects/Ramps"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 10, -19)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Ramps/SteepRamp3"]
+mesh = SubResource("PrismMesh_6gshq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Ramps/SteepRamp3"]
+shape = SubResource("ConcavePolygonShape3D_yblua")
+
+[node name="Stairs" type="Node3D" parent="Objects"]
+
+[node name="Shallow Stairs" type="Node3D" parent="Objects/Stairs"]
+
+[node name="ShallowStep1" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -9.58494, 0.25, -5.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep1"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep1"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep2" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -10.451, 0.75, -6)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep2"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep2"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep3" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -11.317, 1.25, -6.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep3"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep3"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep4" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -12.183, 1.75, -7)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep4"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep4"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep5" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -13.049, 2.25, -7.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep5"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep5"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep6" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, 0.866025, -13.9151, 2.75, -8)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep6"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep6"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep7" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -8, 0.25, -11.0849)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep7"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep7"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep8" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -8.5, 0.75, -11.951)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep8"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep8"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep9" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -9, 1.25, -12.817)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep9"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep9"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep10" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -9.5, 1.75, -13.683)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep10"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep10"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep11" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -10, 2.25, -14.549)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep11"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep11"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep12" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -10.5, 2.75, -15.4151)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep12"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep12"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep13" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -7.60295, 0.25, -16.8352)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep13"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep13"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep14" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -7.86177, 0.75, -17.8011)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep14"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep14"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep15" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -8.12059, 1.25, -18.767)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep15"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep15"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep16" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -8.37941, 1.75, -19.733)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep16"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep16"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep17" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -8.63823, 2.25, -20.6989)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep17"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep17"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep18" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -8.89705, 2.75, -21.6648)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep18"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep18"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep19" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, 15, 0.25, -4.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep19"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep19"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep20" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, 15, 0.75, -5.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep20"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep20"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep21" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, 15, 1.25, -6.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep21"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep21"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep22" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, 15, 1.75, -7.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep22"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep22"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep23" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, 15, 2.25, -8.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep23"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep23"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep24" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, 15, 2.75, -9.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep24"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep24"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep25" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, 15, 3.25, -10.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep25"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep25"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep26" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-2.98023e-08, 0, -1, 0, 1, 0, 1, 0, -2.98023e-08, 15, 3.75, -11.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep26"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep26"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep27" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 21, 0.25, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep27"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep27"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep28" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 22, 0.75, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep28"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep28"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep29" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 23, 0.25, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep29"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep29"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep30" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 24, 0.75, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep30"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep30"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep31" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 25, 0.25, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep31"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep31"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep32" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 26, 0.75, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep32"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep32"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep33" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 27, 0.25, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep33"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep33"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep34" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 28, 0.75, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep34"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep34"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep35" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 29, 0.25, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep35"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep35"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep36" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 30, 0.75, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep36"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep36"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep37" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 31, 0.25, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep37"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep37"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep38" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 32, 0.75, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep38"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep38"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep39" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 33, 0.25, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep39"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep39"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep40" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 34, 0.75, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep40"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep40"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep41" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 35, 0.25, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep41"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep41"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep42" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 36, 0.75, 2.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep42"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep42"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep43" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 21, 0.25, 5.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep43"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep43"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep44" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 22.25, 0.75, 5.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep44"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep44"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep45" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 23.5, 0.25, 5.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep45"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep45"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep46" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 24.75, 0.75, 5.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep46"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep46"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep47" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 26, 0.25, 5.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep47"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep47"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep48" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 27.25, 0.75, 5.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep48"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep48"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep49" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 28.5, 0.25, 5.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep49"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep49"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep50" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 29.75, 0.75, 5.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep50"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep50"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep51" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 31, 0.25, 5.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep51"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep51"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep52" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 32.25, 0.75, 5.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep52"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep52"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep53" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 33.5, 0.25, 5.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep53"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep53"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep54" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 34.75, 0.75, 5.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep54"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep54"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep55" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 21, 0.25, 8.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep55"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep55"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep56" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 22.5, 0.75, 8.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep56"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep56"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep57" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 24, 0.25, 8.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep57"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep57"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep58" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 25.5, 0.75, 8.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep58"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep58"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep59" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 27, 0.25, 8.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep59"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep59"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep60" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 28.5, 0.75, 8.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep60"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep60"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep61" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 30, 0.25, 8.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep61"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep61"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep62" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 31.5, 0.75, 8.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep62"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep62"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep63" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 33, 0.25, 8.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep63"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep63"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep64" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 34.5, 0.75, 8.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep64"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep64"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep65" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 17.5, 0, 14)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep65"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep65"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep66" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 18.5, 0.25, 14)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep66"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep66"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep67" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 19.5, 0.5, 14)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep67"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep67"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep68" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 20.5, 0.75, 14)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep68"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep68"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep69" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 17.5, 0, 16.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep69"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep69"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep70" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 18.5, 0.25, 16.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep70"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep70"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep71" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 19.5, 0.5, 16.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep71"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep71"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep72" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 20.5, 0.75, 16.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep72"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep72"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep73" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 17.5, 0, 19)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep73"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep73"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep74" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 18.5, 0.25, 19)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep74"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep74"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep75" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 19.5, 0.5, 19)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep75"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep75"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep76" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 20.5, 0.75, 19)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep76"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep76"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep77" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 17.5, 0, 21.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep77"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep77"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep78" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 18.75, 0.25, 21.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep78"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep78"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep79" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 20, 0.5, 21.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep79"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep79"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="ShallowStep80" type="StaticBody3D" parent="Objects/Stairs/Shallow Stairs"]
+transform = Transform3D(-1, 0, 7.35137e-08, 0, 1, 0, -7.35137e-08, 0, -1, 21.25, 0.75, 21.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep80"]
+mesh = SubResource("BoxMesh_gt8aw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Shallow Stairs/ShallowStep80"]
+shape = SubResource("ConcavePolygonShape3D_diivs")
+
+[node name="Steep Stairs" type="Node3D" parent="Objects/Stairs"]
+
+[node name="SteepStep1" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -0.25, 0.25, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep1"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep1"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep2" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -0.75, 0.75, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep2"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep2"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep3" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -1.25, 1.25, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep3"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep3"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep4" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -1.75, 1.75, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep4"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep4"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep5" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -2.25, 2.25, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep5"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep5"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep6" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -2.75, 2.75, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep6"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep6"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep7" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -3.25, 3.25, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep7"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep7"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep8" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -3.75, 3.75, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep8"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep8"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep9" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -4.25, 4.25, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep9"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep9"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep10" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -4.75, 4.75, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep10"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep10"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep11" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -5.25, 5.25, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep11"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep11"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep12" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -5.75, 5.75, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep12"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep12"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep13" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -6.25, 6.25, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep13"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep13"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep14" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -6.75, 6.75, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep14"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep14"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep15" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -7.25, 7.25, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep15"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep15"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep16" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -7.75, 7.75, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep16"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep16"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep17" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -8.25, 8.25, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep17"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep17"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep18" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -8.75, 8.75, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep18"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep18"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep19" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -9.25, 9.25, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep19"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep19"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep20" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -9.75, 9.75, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep20"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep20"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep21" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -10.25, 10.25, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep21"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep21"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep22" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -10.75, 10.75, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep22"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep22"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep23" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -11.25, 11.25, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep23"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep23"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep24" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -11.75, 11.75, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep24"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep24"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep25" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -12.25, 12.25, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep25"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep25"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep26" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -12.75, 12.75, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep26"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep26"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep27" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -13.25, 13.25, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep27"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep27"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep28" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -13.75, 13.75, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep28"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep28"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep29" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -14.25, 14.25, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep29"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep29"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep30" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -14.75, 14.75, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep30"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep30"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep31" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -15.25, 15.25, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep31"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep31"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep32" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(1, 0, -1.64905e-07, 0, 1, 0, 1.64905e-07, 0, 1, -15.75, 15.75, 15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep32"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep32"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep33" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 15.75, 13.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep33"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep33"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep34" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 16.25, 13.25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep34"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep34"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep35" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 16.75, 12.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep35"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep35"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep36" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 17.25, 12.25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep36"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep36"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep37" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 17.75, 11.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep37"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep37"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep38" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 18.25, 11.25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep38"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep38"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep39" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 18.75, 10.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep39"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep39"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep40" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 19.25, 10.25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep40"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep40"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep41" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 19.75, 9.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep41"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep41"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep42" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 20.25, 9.25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep42"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep42"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep43" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 20.75, 8.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep43"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep43"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep44" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 21.25, 8.25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep44"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep44"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep45" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 21.75, 7.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep45"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep45"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep46" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 22.25, 7.25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep46"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep46"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep47" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 22.75, 6.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep47"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep47"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep48" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 23.25, 6.25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep48"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep48"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep49" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 23.75, 5.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep49"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep49"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep50" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 24.25, 5.25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep50"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep50"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep51" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 24.75, 4.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep51"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep51"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep52" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 25.25, 4.25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep52"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep52"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep53" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 25.75, 3.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep53"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep53"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep54" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 26.25, 3.25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep54"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep54"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep55" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 26.75, 2.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep55"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep55"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep56" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 27.25, 2.25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep56"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep56"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep57" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 27.75, 1.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep57"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep57"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep58" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 28.25, 1.25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep58"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep58"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep59" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 28.75, 0.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep59"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep59"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep60" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 29.25, 0.25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep60"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep60"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep61" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 29.75, -0.25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep61"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep61"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep62" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 30.25, -0.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep62"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep62"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep63" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 30.75, -1.25)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep63"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep63"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="SteepStep64" type="StaticBody3D" parent="Objects/Stairs/Steep Stairs"]
+transform = Transform3D(-2.08616e-07, 0, -1, 0, 1, 0, 1, 0, -2.08616e-07, -17, 31.25, -1.75)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Stairs/Steep Stairs/SteepStep64"]
+mesh = SubResource("BoxMesh_mvreg")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Stairs/Steep Stairs/SteepStep64"]
+shape = SubResource("ConcavePolygonShape3D_op6cu")
+
+[node name="Towers" type="Node3D" parent="Objects"]
+
+[node name="Tower1" type="StaticBody3D" parent="Objects/Towers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 8, 19)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Towers/Tower1"]
+mesh = SubResource("BoxMesh_yo4k1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Towers/Tower1"]
+shape = SubResource("ConcavePolygonShape3D_ls0vr")
+
+[node name="Tower2" type="StaticBody3D" parent="Objects/Towers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13, 23.5, -7)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Towers/Tower2"]
+mesh = SubResource("BoxMesh_yo4k1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Towers/Tower2"]
+shape = SubResource("ConcavePolygonShape3D_ls0vr")
+
+[node name="Tower3" type="StaticBody3D" parent="Objects/Towers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, 2, -15)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Towers/Tower3"]
+mesh = SubResource("BoxMesh_yo4k1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Towers/Tower3"]
+shape = SubResource("ConcavePolygonShape3D_ls0vr")
+
+[node name="Tower4" type="StaticBody3D" parent="Objects/Towers"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23, -4, -9)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Towers/Tower4"]
+mesh = SubResource("BoxMesh_yo4k1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Towers/Tower4"]
+shape = SubResource("ConcavePolygonShape3D_ls0vr")
+
+[node name="Walls" type="Node3D" parent="Objects"]
+
+[node name="Wall1" type="StaticBody3D" parent="Objects/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -6, 25, 16.5)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Walls/Wall1"]
+mesh = SubResource("BoxMesh_f707a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Walls/Wall1"]
+shape = SubResource("ConcavePolygonShape3D_bxyuc")
+
+[node name="Wall2" type="StaticBody3D" parent="Objects/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 28.5, 25, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Objects/Walls/Wall2"]
+mesh = SubResource("BoxMesh_f707a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Objects/Walls/Wall2"]
+shape = SubResource("ConcavePolygonShape3D_bxyuc")
