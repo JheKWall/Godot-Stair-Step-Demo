@@ -6,9 +6,13 @@ Utilizes raycasts and body_test_moves to get step heights, avoid walls, avoid st
 Note that this uses Jolt Physics (https://github.com/godot-jolt/godot-jolt) instead of the default Godot Physics. While Godot Physics works, there are a few minor issues with player collisions that cause jittering and prevent players from moving in certain circumstances (see notes in player controller script). Jolt Physics is not observed to have these issues, and is preferred.
 
 Controls:
+
 WASD - Movement
+
 Space - Jump (press), Fly (hold)
+
 ESC - Mouse capture toggle
+
 ~ / Tilde - Debug menu toggle
 
 Features:
