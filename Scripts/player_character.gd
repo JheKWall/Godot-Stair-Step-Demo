@@ -51,15 +51,8 @@ extends CharacterBody3D
 
 @onready var PLAYER_BOTTOM = $PlayerBottom
 
-@onready var COL_RAY_1 = $CollisionRays/CollisionRay1	# Collision raycasts
-@onready var COL_RAY_2 = $CollisionRays/CollisionRay2
-@onready var COL_RAY_3 = $CollisionRays/CollisionRay3
-@onready var COL_RAY_4 = $CollisionRays/CollisionRay4
-@onready var COL_RAY_5 = $CollisionRays/CollisionRay5
-
-@onready var COL_RAY_DIST := 0.5						# Base horizontal distance of [CollisionRays]
-
-@onready var COL_RAYS = [COL_RAY_1, COL_RAY_2, COL_RAY_3, COL_RAY_4, COL_RAY_5]	# Shortcut for referencing all [CollsionRays]
+@onready var COL_RAY = $CollisionRay	# Collision raycasts
+@onready var COL_RAY_DIST := 0.5		# Base horizontal distance of [CollisionRays]
 
 @onready var PLAYER_HEIGHT = $PlayerCollision.shape.height		# Used to initialize [CollisionRays] position
 
@@ -87,7 +80,7 @@ func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 	# Adjust collision rays
-	_adjust_collision_rays()
+	_adjust_collision_ray()
 
 # Function: Handle defined inputs
 func _input(event):
@@ -118,12 +111,10 @@ func _toggle_mouse_mode():
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
-# Function: Initialize Collision Rays to correct positions
-func _adjust_collision_rays():
-	for i in range(COL_RAYS.size()):
-		COL_RAYS[i].target_position.y = -(MAX_STEP_UP)
-
-		COL_RAYS[i].position.y = -PLAYER_HEIGHT / 2.0 + MAX_STEP_UP - 0.05
+# Function: Adjust Collision Ray to correct Y position and length
+func _adjust_collision_ray():
+	COL_RAY.target_position.y = -(MAX_STEP_UP)
+	COL_RAY.position.y = -PLAYER_HEIGHT / 2.0 + MAX_STEP_UP - 0.05
 
 # Function: Handle frame-based processes
 func _process(_delta):
@@ -219,30 +210,45 @@ func stair_step_up(delta):
 	var player_coordy = PLAYER_BOTTOM.global_position.y	# Lowest Y coordinate of player
 	_debug_stair_step_up("SSU_PLAYER", player_coordy)												## DEBUG
 
-	for i in range(COL_RAYS.size()):
-		# Loop updates and checks all collision rays
+	# Run a collision ray sweep
+	## Note:
+	# This works by taking a single collision ray (COL_RAY) and sweeping it from -60 to 60 when a
+	# step is detected in front of the player. You can manually adjust the angle_increment and
+	# range of the loop to increase/decrease step collision precision, although I found that this
+	# is good. May scale poorly if given to 100 enemies.
+	var angle_increment = 20
+	for i in range(7, 0, -1):
+		@warning_ignore("integer_division")	# I love Godot
+		var angle = angle_increment * floor(i / 2) * (-1 if i % 2 == 1 else 1)
+		## Note:
+		# With this current implementation, the angles checked will be as follows:
+		# 1. -60
+		# 2.  60
+		# 3. -40
+		# 4.  40
+		# 5. -20
+		# 6.  20
+		# 7.   0
+
+		# Adjust horizontal COL_RAY position based on angle
 		var colray_pos = wish_dir * COL_RAY_DIST + distance
-		match i:
-			1:
-				colray_pos = colray_pos.rotated(Vector3(0, 1, 0), deg_to_rad(-30))
-			2:
-				colray_pos = colray_pos.rotated(Vector3(0, 1, 0), deg_to_rad(30))
-			3:
-				colray_pos = colray_pos.rotated(Vector3(0, 1, 0), deg_to_rad(-60))
-			4:
-				colray_pos = colray_pos.rotated(Vector3(0, 1, 0), deg_to_rad(60))
+		colray_pos = colray_pos.rotated(Vector3.UP, deg_to_rad(angle))
+		_debug_stair_step_up("SSU_COLRAY_ANGLE", angle)												## DEBUG
 
-		COL_RAYS[i].global_position.x = self.global_position.x + colray_pos.x
-		COL_RAYS[i].global_position.z = self.global_position.z + colray_pos.z
+		COL_RAY.global_position.x = self.global_position.x + colray_pos.x
+		COL_RAY.global_position.z = self.global_position.z + colray_pos.z
+		_debug_stair_step_up("SSU_COLRAY", colray_pos)												## DEBUG
 
-		if COL_RAYS[i].is_colliding():
+		# Update COL_RAY and check for collision
+		COL_RAY.force_raycast_update()
+		if COL_RAY.is_colliding():
 			# If a collision ray collides, we check for step height
-			var collision_coordy = COL_RAYS[i].get_collision_point().y
+			var collision_coordy = COL_RAY.get_collision_point().y
 			var difference = collision_coordy - player_coordy
-			_debug_stair_step_up("SSU_COL_COORDS", COL_RAYS[i])										## DEBUG
+			_debug_stair_step_up("SSU_COL_COORDS", COL_RAY)											## DEBUG
 
 			# Also check for slope
-			var collision_normal = COL_RAYS[i].get_collision_normal().y
+			var collision_normal = COL_RAY.get_collision_normal().y
 			_debug_stair_step_up("SSU_COL_NORMAL", collision_normal)								## DEBUG
 
 			# If 1: The step difference is within the margin
@@ -281,6 +287,11 @@ func smooth_camera_jitter(delta):
 	CAMERA_HEAD.global_position.y = lerpf(CAMERA_HEAD.global_position.y, CAMERA_NECK.global_position.y, CAMERA_SMOOTHING * delta)
 	CAMERA_HEAD.global_position.z = CAMERA_NECK.global_position.z
 
+	# Limit how far camera can lag behind its desired position
+	CAMERA_HEAD.global_position.y = clampf(CAMERA_HEAD.global_position.y,
+										-CAMERA_NECK.global_position.y - 1,
+										CAMERA_NECK.global_position.y + 1)
+
 ## Debugging #######################################################################################
 
 # Debug: Stair Step Down
@@ -309,6 +320,10 @@ func _debug_stair_step_up(param, value):
 		"SSU_PLAYER":
 			print("SSU: Collision ahead, checking for step...")
 			print("SSU: Player coordinates = ", value)
+		"SSU_COLRAY_ANGLE":
+			print("SSU: COL_RAY ANGLE = ", value)
+		"SSU_COLRAY":
+			print("SSU: COL_RAY POSITION = ", self.global_position + value)
 		"SSU_COL_COORDS":
 			print("SSU: Collision detected")
 			print("SSU: Collision coordinates = ", value.get_collision_point().y)
@@ -333,30 +348,30 @@ func _debug_update_debug():
 func _on_step_0_5_pressed():
 	MAX_STEP_UP = 0.5
 	MAX_STEP_DOWN = -0.5
-	_adjust_collision_rays()
+	_adjust_collision_ray()
 
 # Button: Change MAX_STEP_UP/MAX_STEP_DOWN to 1/-1
 func _on_step_1_pressed():
 	MAX_STEP_UP = 1
 	MAX_STEP_DOWN = -1
-	_adjust_collision_rays()
+	_adjust_collision_ray()
 
 # Button: Change MAX_STEP_UP/MAX_STEP_DOWN to 2/-2
 func _on_step_2_pressed():
 	MAX_STEP_UP = 2
 	MAX_STEP_DOWN = -2
-	_adjust_collision_rays()
+	_adjust_collision_ray()
 
 # Button: Change MAX_STEP_UP/MAX_STEP_DOWN to 4/-4
 func _on_step_4_pressed():
 	MAX_STEP_UP = 4
 	MAX_STEP_DOWN = -4
-	_adjust_collision_rays()
+	_adjust_collision_ray()
 
 # Button: Change MAX_STEP_UP/MAX_STEP_DOWN to 100/-100
 func _on_step_100_pressed():
 	MAX_STEP_UP = 100
 	MAX_STEP_DOWN = -100
-	_adjust_collision_rays()
+	_adjust_collision_ray()
 
 #endregion

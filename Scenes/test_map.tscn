@@ -147,7 +147,6 @@ metadata/_edit_lock_ = true
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_wh422")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
-STEP_UP_DEBUG = true
 
 [node name="Objects" type="Node3D" parent="."]
 
