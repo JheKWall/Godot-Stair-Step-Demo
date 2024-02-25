@@ -177,7 +177,6 @@ func stair_step_up():
 	body_test_params.from = self.global_transform		## Self as origin point
 	body_test_params.motion = distance					## Go forward by current distance
 
-	print("SSU_0: Var init")#!
 	_debug_stair_step_up("SSU_TEST_POS", test_transform)											## DEBUG
 
 	# Pre-check: Are we colliding?
@@ -191,7 +190,6 @@ func stair_step_up():
 	var remainder = body_test_result.get_remainder()							## Get remainder from collision
 	test_transform = test_transform.translated(body_test_result.get_travel())	## Move test_transform by distance traveled before collision
 
-	print("SSU_1: Move transform to collision location")#!
 	_debug_stair_step_up("SSU_REMAINING", remainder)												## DEBUG
 	_debug_stair_step_up("SSU_TEST_POS", test_transform)											## DEBUG
 
@@ -202,7 +200,6 @@ func stair_step_up():
 	PhysicsServer3D.body_test_motion(self.get_rid(), body_test_params, body_test_result)
 	test_transform = test_transform.translated(body_test_result.get_travel())
 
-	print("SSU_2: Move transform up to ceiling/step_height")#!
 	_debug_stair_step_up("SSU_TEST_POS", test_transform)											## DEBUG
 
 	# 3. Move test_transform forward by remaining distance
@@ -211,13 +208,11 @@ func stair_step_up():
 	PhysicsServer3D.body_test_motion(self.get_rid(), body_test_params, body_test_result)
 	test_transform = test_transform.translated(body_test_result.get_travel())
 
-	print("SSU_3: Move transform forward by remaining")#!
 	_debug_stair_step_up("SSU_TEST_POS", test_transform)											## DEBUG
 
 	# 3.5 Project remaining along wall normal (if any)
 	## So you can walk into wall and up a step
 	if body_test_result.get_collision_count() != 0:
-		print("Collided at step height")#!
 		remainder = body_test_result.get_remainder().length()
 
 		### Uh, there may be a better way to calculate this in Godot.
@@ -231,7 +226,6 @@ func stair_step_up():
 		test_transform = test_transform.translated(body_test_result.get_travel())
 
 		_debug_stair_step_up("SSU_TEST_POS", test_transform)										## DEBUG
-		print("Projection done")#!
 
 	# 4. Move test_transform down onto step
 	body_test_params.from = test_transform
@@ -243,15 +237,13 @@ func stair_step_up():
 
 		return
 
-	print("SSU_4: Move transform down onto step")#!
 	test_transform = test_transform.translated(body_test_result.get_travel())
 	_debug_stair_step_up("SSU_TEST_POS", test_transform)											## DEBUG
 
 	# 5. Check floor normal for un-walkable slope
 	var surface_normal = body_test_result.get_collision_normal()
-
-	print("SSU_5: Check for un-walkable slope")#!
-	if (surface_normal.angle_to(vertical) > floor_max_angle):
+	var temp_floor_max_angle = floor_max_angle + deg_to_rad(20)
+	if (snappedf(surface_normal.angle_to(vertical), 0.001) > temp_floor_max_angle):
 		_debug_stair_step_up("SSU_EXIT_3", null)													## DEBUG
 
 		return
@@ -261,7 +253,6 @@ func stair_step_up():
 	# 6. Move player up
 	var global_pos = global_position
 	var step_up_dist = test_transform.origin.y - global_pos.y
-	print("SSU_6: Move player up")#!
 	_debug_stair_step_up("SSU_APPLIED", step_up_dist)												## DEBUG
 
 	global_pos.y = test_transform.origin.y
