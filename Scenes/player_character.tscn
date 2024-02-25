@@ -1,18 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bkh244ybrnt3j"]
+[gd_scene load_steps=7 format=3 uid="uid://bkh244ybrnt3j"]
 
 [ext_resource type="Script" path="res://Scripts/player_character.gd" id="1_t2afb"]
 [ext_resource type="Material" uid="uid://cue16i6jlwjtl" path="res://Assets/textures/GridOrangeTile.tres" id="2_nrduh"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_efn4y"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_28r7i"]
-radius = 0.25
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_bs6ld"]
 material = ExtResource("2_nrduh")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_gppcu"]
-size = Vector3(0.1, 0, 0.1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7ocfa"]
 bg_color = Color(0.133333, 0.133333, 0.133333, 0.392157)
@@ -35,16 +29,11 @@ PanelContainer/styles/panel = SubResource("StyleBoxFlat_7ocfa")
 
 [node name="PlayerCharacter" type="CharacterBody3D"]
 floor_stop_on_slope = false
-floor_block_on_wall = false
 floor_snap_length = 0.5
 script = ExtResource("1_t2afb")
 
 [node name="PlayerCollision" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_efn4y")
-
-[node name="PlayerCollisionSupport" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.800067, 0)
-shape = SubResource("SphereShape3D_28r7i")
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="."]
 layers = 2
@@ -61,15 +50,6 @@ top_level = true
 cull_mask = 1048573
 current = true
 fov = 90.0
-
-[node name="PlayerBottom" type="ShapeCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05, 0)
-enabled = false
-shape = SubResource("BoxShape3D_gppcu")
-target_position = Vector3(0, 0, 0)
-max_results = 0
-collision_mask = 0
-collide_with_bodies = false
 
 [node name="PlayerHUD" type="Control" parent="."]
 layout_mode = 3

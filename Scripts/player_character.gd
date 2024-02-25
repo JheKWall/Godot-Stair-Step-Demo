@@ -1,33 +1,27 @@
 extends CharacterBody3D
 ## Credits:
-# Special thanks to Majikayo Games for original solution to stair_step_down
+# Special thanks to Majikayo Games for original solution to stair_step_down!
 # (https://youtu.be/-WjM1uksPIk)
 #
-# Special thanks to Myria666 for their paper on Quake movement mechanics (used for stair_step_up)
+# Special thanks to Myria666 for their paper on Quake movement mechanics (used for stair_step_up)!
 # (https://github.com/myria666/qMovementDoc)
+#
+# Special thanks to Andicraft for their help with implementation stair_step_up!
+# (https://github.com/Andicraft)
 
 ## Notes:
-# 0. We use a cylinder collider to ensure we're either on a step or not on a step.
-#	If you wish to use a capsule collider, you may need to add a [ShapeCast3D] to the bottom of
-#	the player and make sure it's not colliding when you call stair_step_down().
+# 0. All shape colliders are supported. Although, I would recommend Capsule colliders for enemies
+#		as it works better with the Navigation Meshes. Its up to you what shape you want to use
+#		for players.
 #
-# 1. [PlayerCollisionSupport] gives us 0.05m of clearance off the ground so we don't snag on bad
-#	bad colliders or the ledges of steps. It also helps the cylinder behave more like a capsule
-#	while keeping the benefits of a cylinder.
+# 1. To adjust the step-up/down height, just change the MAX_STEP_UP/MAX_STEP_DOWN values below.
 #
-# 2. The [PlayerBottom] Node is used to grab the lowest Y value of the player.
-#	I'm unsure if there is another way to do it, but you can't just use self.global_position.y
-#	as it seems to return the center of the player.
-#
-# 3. To adjust the step-up/down height, just change the MAX_STEP_UP/MAX_STEP_DOWN values below.
-#
-# 4. This uses Jolt Physics as the default Godot Physics has a few bugs:
-#	4.1: On the stairsteps with boxes blocking you from climbing onto them (in front of steep stairs),
-#		you can go up but not down the third set of stairs, but with Jolt Physics you can.
-#	4.2: Walking into some objects may push the player downward by a small amount which causes
+# 2. This uses Jolt Physics as the default Godot Physics has a few bugs:
+#	1: Small gaps that you should be able to fit through both ways will block you in Godot Physics.
+#		You can see this demonstrated with the floating boxes in front of the big stairs.
+#	2: Walking into some objects may push the player downward by a small amount which causes
 #		jittering and causes the floor to be detected as a step.
-#	Note that this still works with default Godot Physics, although it feels a lot better
-#	in Jolt Physics.
+#	TLDR: This still works with default Godot Physics, although it feels a lot better in Jolt Physics.
 
 #region ANNOTATIONS ################################################################################
 @export_category("Player Settings")
@@ -37,21 +31,17 @@ extends CharacterBody3D
 @export var MAX_STEP_UP := 0.5			# Maximum height in meters the player can step up.
 @export var MAX_STEP_DOWN := -0.5		# Maximum height in meters the player can step down.
 
-@export var MOUSE_SENSITIVITY := 0.4	# Mouse movement sensitivity
-@export var CAMERA_SMOOTHING := 18.0		# Amount of camera smoothing
+@export var MOUSE_SENSITIVITY := 0.4	# Mouse movement sensitivity.
+@export var CAMERA_SMOOTHING := 18.0	# Amount of camera smoothing.
 
 @export_category("Debug Settings")
-@export var STEP_DOWN_DEBUG := false
+@export var STEP_DOWN_DEBUG := false	# Enable these to get detailed info on the step down/up process.
 @export var STEP_UP_DEBUG := false
 
 ## Node References
 @onready var CAMERA_NECK = $CameraNeck
 @onready var CAMERA_HEAD = $CameraNeck/CameraHead
 @onready var PLAYER_CAMERA = $CameraNeck/CameraHead/PlayerCamera
-
-@onready var PLAYER_BOTTOM = $PlayerBottom
-
-@onready var PLAYER_HEIGHT = $PlayerCollision.shape.height		# Used to initialize [CollisionRays] position
 
 @onready var DEBUG_MENU = $PlayerHUD/DebugMenu
 @onready var MAX_STEP_UP_LABEL = $PlayerHUD/DebugMenu/Margins/VBox/MaxStepUpLabel
@@ -136,7 +126,7 @@ func _physics_process(delta):
 	velocity.z = wish_dir.z * PLAYER_SPEED
 
 	# Stair step up
-	stair_step_up(delta)
+	stair_step_up()
 
 	# Move
 	move_and_slide()
@@ -172,7 +162,7 @@ func stair_step_down():
 			_debug_stair_step_down("SSD_APPLIED", body_test_result.get_travel().y)					## DEBUG
 
 # Function: Handle walking up stairs
-func stair_step_up(delta):
+func stair_step_up():
 	if wish_dir == Vector3.ZERO:
 		return
 
@@ -183,10 +173,11 @@ func stair_step_up(delta):
 	var body_test_result = PhysicsTestMotionResult3D.new()
 
 	var test_transform = global_transform				## Storing current global_transform for testing
-	var distance = (velocity * horizontal) * delta		## We store horizontal movement per frame
+	var distance = wish_dir * 0.1						## Distance forward we want to check
 	body_test_params.from = self.global_transform		## Self as origin point
 	body_test_params.motion = distance					## Go forward by current distance
 
+	print("SSU_0: Var init")#!
 	_debug_stair_step_up("SSU_TEST_POS", test_transform)											## DEBUG
 
 	# Pre-check: Are we colliding?
@@ -200,6 +191,7 @@ func stair_step_up(delta):
 	var remainder = body_test_result.get_remainder()							## Get remainder from collision
 	test_transform = test_transform.translated(body_test_result.get_travel())	## Move test_transform by distance traveled before collision
 
+	print("SSU_1: Move transform to collision location")#!
 	_debug_stair_step_up("SSU_REMAINING", remainder)												## DEBUG
 	_debug_stair_step_up("SSU_TEST_POS", test_transform)											## DEBUG
 
@@ -210,6 +202,7 @@ func stair_step_up(delta):
 	PhysicsServer3D.body_test_motion(self.get_rid(), body_test_params, body_test_result)
 	test_transform = test_transform.translated(body_test_result.get_travel())
 
+	print("SSU_2: Move transform up to ceiling/step_height")#!
 	_debug_stair_step_up("SSU_TEST_POS", test_transform)											## DEBUG
 
 	# 3. Move test_transform forward by remaining distance
@@ -218,11 +211,13 @@ func stair_step_up(delta):
 	PhysicsServer3D.body_test_motion(self.get_rid(), body_test_params, body_test_result)
 	test_transform = test_transform.translated(body_test_result.get_travel())
 
+	print("SSU_3: Move transform forward by remaining")#!
 	_debug_stair_step_up("SSU_TEST_POS", test_transform)											## DEBUG
 
 	# 3.5 Project remaining along wall normal (if any)
 	## So you can walk into wall and up a step
 	if body_test_result.get_collision_count() != 0:
+		print("Collided at step height")#!
 		remainder = body_test_result.get_remainder().length()
 
 		### Uh, there may be a better way to calculate this in Godot.
@@ -236,12 +231,11 @@ func stair_step_up(delta):
 		test_transform = test_transform.translated(body_test_result.get_travel())
 
 		_debug_stair_step_up("SSU_TEST_POS", test_transform)										## DEBUG
+		print("Projection done")#!
 
 	# 4. Move test_transform down onto step
 	body_test_params.from = test_transform
 	body_test_params.motion = MAX_STEP_UP * -vertical
-
-	_debug_stair_step_up("SSU_TEST_POS", test_transform)											## DEBUG
 
 	# Return if no collision
 	if !PhysicsServer3D.body_test_motion(self.get_rid(), body_test_params, body_test_result):
@@ -249,9 +243,14 @@ func stair_step_up(delta):
 
 		return
 
-	# 5. Check floor normal for un-walkable slope
+	print("SSU_4: Move transform down onto step")#!
 	test_transform = test_transform.translated(body_test_result.get_travel())
+	_debug_stair_step_up("SSU_TEST_POS", test_transform)											## DEBUG
+
+	# 5. Check floor normal for un-walkable slope
 	var surface_normal = body_test_result.get_collision_normal()
+
+	print("SSU_5: Check for un-walkable slope")#!
 	if (surface_normal.angle_to(vertical) > floor_max_angle):
 		_debug_stair_step_up("SSU_EXIT_3", null)													## DEBUG
 
@@ -261,8 +260,8 @@ func stair_step_up(delta):
 
 	# 6. Move player up
 	var global_pos = global_position
-
 	var step_up_dist = test_transform.origin.y - global_pos.y
+	print("SSU_6: Move player up")#!
 	_debug_stair_step_up("SSU_APPLIED", step_up_dist)												## DEBUG
 
 	global_pos.y = test_transform.origin.y
