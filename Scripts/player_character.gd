@@ -39,6 +39,8 @@ extends CharacterBody3D
 @export var STEP_UP_DEBUG := false
 
 ## Node References
+@onready var PLAYER_COLLIDER = $PlayerCollision
+
 @onready var CAMERA_NECK = $CameraNeck
 @onready var CAMERA_HEAD = $CameraNeck/CameraHead
 @onready var PLAYER_CAMERA = $CameraNeck/CameraHead/PlayerCamera
@@ -101,6 +103,9 @@ func _process(_delta):
 
 # Function: Handle frame-based physics processes
 func _physics_process(delta):
+	# Lock player collider rotation
+	PLAYER_COLLIDER.global_rotation = Vector3.ZERO
+
 	# Update player state
 	was_grounded = is_grounded
 
@@ -242,12 +247,12 @@ func stair_step_up():
 
 	# 5. Check floor normal for un-walkable slope
 	var surface_normal = body_test_result.get_collision_normal()
-	var temp_floor_max_angle = floor_max_angle + deg_to_rad(20)
-	if (snappedf(surface_normal.angle_to(vertical), 0.001) > temp_floor_max_angle):
+	print("SSU: Surface check: ", snappedf(surface_normal.angle_to(vertical), 0.001), " vs ", floor_max_angle)#!
+	if (snappedf(surface_normal.angle_to(vertical), 0.001) > floor_max_angle):
 		_debug_stair_step_up("SSU_EXIT_3", null)													## DEBUG
 
 		return
-
+	print("SSU: Walkable")#!
 	_debug_stair_step_up("SSU_TEST_POS", test_transform)											## DEBUG
 
 	# 6. Move player up

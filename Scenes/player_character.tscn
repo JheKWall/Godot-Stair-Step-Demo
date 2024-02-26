@@ -3,7 +3,8 @@
 [ext_resource type="Script" path="res://Scripts/player_character.gd" id="1_t2afb"]
 [ext_resource type="Material" uid="uid://cue16i6jlwjtl" path="res://Assets/textures/GridOrangeTile.tres" id="2_nrduh"]
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_efn4y"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_t7df6"]
+size = Vector3(1, 2, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_bs6ld"]
 material = ExtResource("2_nrduh")
@@ -33,7 +34,7 @@ floor_snap_length = 0.5
 script = ExtResource("1_t2afb")
 
 [node name="PlayerCollision" type="CollisionShape3D" parent="."]
-shape = SubResource("CylinderShape3D_efn4y")
+shape = SubResource("BoxShape3D_t7df6")
 
 [node name="PlayerMesh" type="MeshInstance3D" parent="."]
 layers = 2
