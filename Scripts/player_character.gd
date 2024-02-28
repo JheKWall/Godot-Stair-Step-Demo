@@ -260,6 +260,7 @@ func stair_step_up():
 	var step_up_dist = test_transform.origin.y - global_pos.y
 	_debug_stair_step_up("SSU_APPLIED", step_up_dist)												## DEBUG
 
+	velocity.y = 0
 	global_pos.y = test_transform.origin.y
 	global_position = global_pos
 
